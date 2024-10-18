@@ -9,6 +9,7 @@ module.exports = {
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     plugins: [
         new MiniCssExtractPlugin({
@@ -18,8 +19,8 @@ module.exports = {
         new HTMLInlineCSSWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './src/index.html',
-            filename: 'index.html'
-        })
+            filename: 'index.html',
+        }),
     ],
     module: {
         rules: [
@@ -37,5 +38,6 @@ module.exports = {
     devServer: {
         watchFiles: ["./src/*"],
         hot: true,
+        open: true,
     },
 };
