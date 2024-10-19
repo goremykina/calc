@@ -1,68 +1,67 @@
-@import './vars.css';
+@import "./vars.css";
 
 * {
-    color: white;
-    font-size: 35px;
-    font-family: Arial, Helvetica, sans-serif;
+	color: white;
+	font-size: 35px;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .calculator-container {
-    margin: 50px auto;
-    width: 350px;
-    height: 500px;
-    background-color: var(--primary-bg-color);
-    border: 1px solid var(--primary-bg-color);
-    border-radius: 20px;
-    box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.15);}
+	margin: 50px auto;
+	width: 350px;
+	height: 500px;
+	background-color: var(--primary-bg-color);
+	border: 1px solid var(--primary-bg-color);
+	border-radius: 20px;
+	box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.15);
+}
 
 .calculator-screen {
-    height: 20%;
-    & p {
-        margin: 0;
-        text-align: end;
-        font-size: 60px;
-        line-height: 60px;
-        padding: 10px;
-    }
+	height: 20%;
+	& p {
+		margin: 0;
+		text-align: end;
+		font-size: 60px;
+		line-height: 60px;
+		padding: 10px;
+	}
 }
 
 .buttons {
-    height: 80%;
+	height: 80%;
 }
 
 .btn-wrapper {
-    height: 20%;
-    display: flex;
-    justify-content: space-between;
+	height: 20%;
+	display: flex;
+	justify-content: space-between;
 }
 
 .btn-wrapper-grid {
-    height: 20%;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+	height: 20%;
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
 }
 
 .btn {
-    padding: 0;
-    border: 1px solid var(--primary-bg-color);
-    background-color: var(--button-secondary-bg-color);
-    flex: 1;
+	padding: 0;
+	border: 1px solid var(--primary-bg-color);
+	background-color: var(--button-secondary-bg-color);
+	flex: 1;
 }
 
 .bg-accent {
-    background-color: var(--button-accent-bg-color);
+	background-color: var(--button-accent-bg-color);
 }
 
 .bg-button {
-    background-color: var(--button-primary-bg-color);
+	background-color: var(--button-primary-bg-color);
 }
 
 .br-l {
-    border-radius: 0 0 0 20px;
+	border-radius: 0 0 0 20px;
 }
 
 .br-r {
-    border-radius: 0 0 20px 0;
+	border-radius: 0 0 20px 0;
 }
-
-
