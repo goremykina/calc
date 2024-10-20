@@ -7,6 +7,8 @@
 }
 
 .calculator-container {
+	display: flex;
+	flex-direction: column;
 	margin: 50px auto;
 	width: 350px;
 	height: 500px;
@@ -17,18 +19,23 @@
 }
 
 .calculator-screen {
-	height: 20%;
+	/*height: 20%;*/
 	& p {
 		margin: 0;
 		text-align: end;
 		font-size: 60px;
-		line-height: 60px;
-		padding: 10px;
+		line-height: 1;
+		padding: 7px;
+	}
+
+	& p.expression-display {
+		font-size: 20px;
+		height: 20px;
 	}
 }
 
 .buttons {
-	height: 80%;
+	flex-grow: 1;
 }
 
 .btn-wrapper {
