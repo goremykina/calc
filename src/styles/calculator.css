@@ -65,3 +65,12 @@
 .br-r {
 	border-radius: 0 0 20px 0;
 }
+
+.btn:hover {
+	cursor: pointer;
+	filter: brightness(110%);
+}
+
+.btn:active {
+	filter: brightness(90%);
+}
