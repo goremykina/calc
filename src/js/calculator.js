@@ -33,7 +33,7 @@ function calculate() {
 			break;
 	}
 
-	clear();
+	clearAll();
 
 	currentOperand = result;
 
@@ -52,7 +52,7 @@ function setOperator(newOperator) {
 	renderDisplay();
 }
 
-function clear() {
+function clearAll() {
 	currentOperand = 0;
 	previousOperand = 0;
 	operator = "";
@@ -73,7 +73,7 @@ function renderDisplay() {
 }
 
 window.setOperator = setOperator;
-window.clear = clear;
+window.clearAll = clearAll;
 window.invertCurrentOperand = invertCurrentOperand;
 window.appendDigit = appendDigit;
 window.calculate = calculate;
@@ -81,7 +81,7 @@ window.calculate = calculate;
 document.addEventListener("DOMContentLoaded", () => {
 	currentEl = document.getElementById("current-operand-display");
 	expressionEl = document.getElementById("expression-display");
-	clear();
+	clearAll();
 });
 
 document.addEventListener("keydown", (event) => {
@@ -92,6 +92,6 @@ document.addEventListener("keydown", (event) => {
 	} else if (event.key === "=" || event.key === "Enter") {
 		calculate();
 	} else if (event.key === "Delete") {
-		clear();
+		clearAll();
 	}
 });
