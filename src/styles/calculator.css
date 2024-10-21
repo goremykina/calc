@@ -1,17 +1,30 @@
 @import "./vars.css";
 
 * {
-	color: white;
+	margin: 0;
+	padding: 0;
+
+	color: var(--font-color);
 	font-size: 35px;
 	font-family: Arial, Helvetica, sans-serif;
+	transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+}
+
+html {
+	background-color: var(--document-bg-color);
+}
+
+header {
+	padding: 10px;
+	text-align: end;
 }
 
 .calculator-container {
 	display: flex;
 	flex-direction: column;
-	margin: 50px auto;
 	width: 350px;
 	height: 500px;
+	margin: auto;
 	background-color: var(--primary-bg-color);
 	border: 1px solid var(--primary-bg-color);
 	border-radius: 20px;
@@ -19,8 +32,7 @@
 }
 
 .calculator-screen {
-	/*height: 20%;*/
-	& p {
+	p {
 		margin: 0;
 		text-align: end;
 		font-size: 60px;
@@ -28,7 +40,7 @@
 		padding: 7px;
 	}
 
-	& p.expression-display {
+	p.expression-display {
 		font-size: 20px;
 		height: 20px;
 	}
@@ -80,4 +92,26 @@
 
 .btn:active {
 	filter: brightness(90%);
+}
+
+.theme-toggle {
+	background: none;
+	border: none;
+
+	color: var(--font-color);
+	cursor: pointer;
+
+	#light-mode-icon {
+		display: none;
+	}
+
+	[data-theme="light"] & {
+		#light-mode-icon {
+			display: unset;
+		}
+
+		#dark-mode-icon {
+			display: none;
+		}
+	}
 }
