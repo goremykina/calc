@@ -11,6 +11,10 @@ const operatorMappings = {
 };
 
 function appendDigit(digit) {
+	if (currentOperand.toString().length >= 10) {
+		return;
+	}
+
 	currentOperand = currentOperand * 10 + digit;
 	renderDisplay();
 }
@@ -31,6 +35,8 @@ function calculate() {
 		case "/":
 			result = previousOperand / currentOperand;
 			break;
+		default:
+			return;
 	}
 
 	clearAll();
