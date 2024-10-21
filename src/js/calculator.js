@@ -46,6 +46,17 @@ function calculate() {
 	renderDisplay();
 }
 
+function percentage() {
+	if (!previousOperand || !currentOperand) {
+		return;
+	}
+
+	const percentageOfOperand = currentOperand / 100;
+	currentOperand = percentageOfOperand * previousOperand;
+
+	renderDisplay();
+}
+
 function setOperator(newOperator) {
 	if (previousOperand && currentOperand) {
 		calculate();
@@ -82,6 +93,7 @@ window.setOperator = setOperator;
 window.clearAll = clearAll;
 window.invertCurrentOperand = invertCurrentOperand;
 window.appendDigit = appendDigit;
+window.percentage = percentage;
 window.calculate = calculate;
 
 document.addEventListener("DOMContentLoaded", () => {
