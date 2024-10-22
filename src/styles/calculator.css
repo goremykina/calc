@@ -116,7 +116,7 @@ header {
 		display: none;
 	}
 
-	[data-theme="light"] & {
+	[data-theme="dark"] & {
 		#light-mode-icon {
 			display: unset;
 		}
