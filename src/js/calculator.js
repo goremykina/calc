@@ -1,6 +1,6 @@
 let operator = "";
-let currentOperand = 0;
-let previousOperand = 0;
+let currentOperand = "0";
+let previousOperand = "";
 let currentEl = null;
 let expressionEl = null;
 const digits = new Set(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]);
@@ -9,75 +9,75 @@ const operatorMappings = {
 	"*": "×",
 	"/": "÷",
 };
+const actions = {
+	"+": (first, second) => first + second,
+	"-": (first, second) => first - second,
+	"*": (first, second) => first * second,
+	"/": (first, second) => first / second,
+};
 
-function appendDigit(digit) {
-	if (currentOperand.toString().length >= 10) {
+function append(char) {
+	if (currentOperand.length >= 10) {
+		alert("The number is too big");
 		return;
 	}
 
-	currentOperand = currentOperand * 10 + digit;
+	if (char === "." && currentOperand.includes(".")) {
+		return;
+	}
+
+	currentOperand = currentOperand + char;
+
+	if (!currentOperand.includes(".")) {
+		currentOperand = sanitize(currentOperand);
+	}
+
 	renderDisplay();
 }
 
 function calculate() {
-	let result;
+	const action = actions[operator];
 
-	switch (operator) {
-		case "+":
-			result = currentOperand + previousOperand;
-			break;
-		case "-":
-			result = previousOperand - currentOperand;
-			break;
-		case "*":
-			result = currentOperand * previousOperand;
-			break;
-		case "/":
-			result = previousOperand / currentOperand;
-			break;
-		default:
-			return;
+	if (!action) {
+		return;
 	}
 
+	const result = action(+previousOperand, +currentOperand);
 	clearAll();
-
-	currentOperand = result;
-
+	currentOperand = result.toString();
 	renderDisplay();
 }
 
 function percentage() {
-	if (!previousOperand || !currentOperand) {
-		return;
-	}
-
-	const percentageOfOperand = currentOperand / 100;
-	currentOperand = percentageOfOperand * previousOperand;
+	const percentageOfOperand = +currentOperand / 100;
+	currentOperand = (percentageOfOperand * +previousOperand).toString();
 
 	renderDisplay();
 }
 
 function setOperator(newOperator) {
-	if (previousOperand && currentOperand) {
+	if (previousOperand) {
 		calculate();
 	}
 
 	operator = newOperator;
-	previousOperand = currentOperand;
-	currentOperand = 0;
+	previousOperand = sanitize(currentOperand);
+	currentOperand = "0";
 
 	renderDisplay();
 }
 
 function clearAll() {
-	currentOperand = 0;
-	previousOperand = 0;
+	currentOperand = "0";
+	previousOperand = "";
 	operator = "";
 	renderDisplay();
 }
 
 function invertCurrentOperand() {
-	currentOperand = -currentOperand;
+	currentOperand = currentOperand.startsWith("-")
+		? currentOperand.substring(1)
+		: `-${currentOperand}`;
 	renderDisplay();
 }
 
@@ -95,10 +95,14 @@ function renderDisplay() {
 	expressionEl.textContent = `${formattedPreviousOperand} ${formattedOperator}`;
 }
 
+function sanitize(number) {
+	return (+number).toString();
+}
+
 window.setOperator = setOperator;
 window.clearAll = clearAll;
 window.invertCurrentOperand = invertCurrentOperand;
-window.appendDigit = appendDigit;
+window.append = append;
 window.percentage = percentage;
 window.calculate = calculate;
 
@@ -110,7 +114,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("keydown", (event) => {
 	if (digits.has(event.key)) {
-		appendDigit(+event.key);
+		append(event.key);
+	} else if (event.key === "." || event.key === ",") {
+		append(".");
 	} else if (operators.has(event.key)) {
 		setOperator(event.key);
 	} else if (event.key === "=" || event.key === "Enter") {
