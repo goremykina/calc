@@ -1,6 +1,5 @@
 name: Deploy to Github pages
 
-# When deployment should be run
 on:
   push:
     branches: ["main"]
@@ -18,7 +17,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -26,7 +25,7 @@ jobs:
         uses: actions/setup-node@v4.0.4
         with:
           node-version: 20
-        
+
       - name: Install dependencies
         run: npm ci
 
