@@ -82,6 +82,12 @@ function invertCurrentOperand() {
 }
 
 function renderDisplay() {
+	if (currentOperand.toString().length >= 10) {
+		currentEl.classList.add("compact");
+	} else {
+		currentEl.classList.remove("compact");
+	}
+
 	const formattedOperator = operatorMappings[operator] || operator;
 	const formattedPreviousOperand = operator ? previousOperand : "";
 

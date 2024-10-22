@@ -7,7 +7,10 @@
 	color: var(--font-color);
 	font-size: 35px;
 	font-family: Arial, Helvetica, sans-serif;
-	transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out;
+	transition:
+		background-color 0.4s ease-in-out,
+		color 0.4s ease-in-out,
+		border-color 0.4s ease-in-out;
 }
 
 html {
@@ -23,7 +26,6 @@ header {
 	display: flex;
 	flex-direction: column;
 	width: 350px;
-	height: 500px;
 	margin: auto;
 	background-color: var(--primary-bg-color);
 	border: 1px solid var(--primary-bg-color);
@@ -44,10 +46,19 @@ header {
 		font-size: 20px;
 		height: 20px;
 	}
+
+	p.current-operand-display {
+		word-break: break-all;
+	}
+}
+
+.compact {
+	font-size: 40px !important;
 }
 
 .buttons {
 	flex-grow: 1;
+	height: 400px;
 }
 
 .btn-wrapper {
