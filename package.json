@@ -5,7 +5,19 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "webpack --mode production",
-		"start": "webpack-dev-server --mode development"
+		"start": "webpack-dev-server --mode development",
+		"prepare": "husky"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,mjs,css,html,json,md}": [
+			"prettier --write",
+			"eslint --fix"
+		]
 	},
 	"author": "",
 	"license": "ISC",
@@ -20,6 +32,8 @@
 		"globals": "^15.11.0",
 		"html-inline-css-webpack-plugin": "^1.11.2",
 		"html-webpack-plugin": "^5.6.0",
+		"husky": "^9.1.6",
+		"lint-staged": "^15.2.10",
 		"mini-css-extract-plugin": "^2.9.1",
 		"prettier": "^3.3.3",
 		"webpack": "^5.95.0",
